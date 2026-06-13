@@ -68,6 +68,18 @@ const techniques = [
       { name: "Сдуваем шарик (выдох)", seconds: 6, kind: "out" },
     ],
   },
+  {
+    id: "fokus",
+    situation: "Не могу сосредоточиться",
+    title: "Ровное дыхание (5-5)",
+    basis: "Когерентное дыхание — около 6 спокойных вдохов в минуту.",
+    why: "Ровный неторопливый ритм успокаивает нервную систему и помогает вернуть внимание к делу.",
+    instruction: "Спокойный вдох на 5 и такой же плавный выдох на 5, без задержек.",
+    phases: [
+      { name: "Вдох", seconds: 5, kind: "in" },
+      { name: "Выдох", seconds: 5, kind: "out" },
+    ],
+  },
 ];
 
 // Находим на странице нужные элементы (экраны и поля техники).
@@ -182,6 +194,13 @@ startButton.addEventListener("click", () => {
     startBreathing();
   }
 });
+
+// Включаем фонового помощника (service worker) для работы оффлайн.
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js");
+  });
+}
 
 // Вешаем обработчик клика на каждую карточку.
 document.querySelectorAll(".card").forEach((card) => {
