@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Просто дыши</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Экран 1: выбор ситуации -->
+  <section id="screen-choice">
+    <h1>Просто дыши</h1>
+    <p>Выбери, что сейчас происходит — подберём короткую технику.</p>
+
+    <div class="cards">
+      <button class="card" data-id="trevoga">Тревога перед важным</button>
+      <button class="card" data-id="son">Не могу уснуть</button>
+      <button class="card" data-id="zlost">Злюсь</button>
+      <button class="card" data-id="panika">Паника</button>
+      <button class="card" data-id="rebenok">Ребёнок расстроен</button>
+    </div>
+  </section>
+
+  <!-- Экран 2: техника (скрыт, заполняется из script.js) -->
+  <section id="screen-technique" hidden>
+    <button id="back-button" class="back">← Назад</button>
+    <h1 id="tech-title"></h1>
+    <p id="tech-basis" class="muted"></p>
+    <p id="tech-instruction"></p>
+    <p id="tech-why" class="muted"></p>
+
+    <!-- Зона дыхания: круг с подписью фазы и отсчётом -->
+    <div class="breath-area">
+      <div id="breath-circle" class="circle">
+        <span id="phase-name" class="phase-name">Готовы?</span>
+        <span id="phase-count" class="phase-count"></span>
+      </div>
+      <div class="controls">
+        <button id="start-button" class="primary">Начать</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="disclaimer">
+    Эти техники помогают успокоиться здесь и сейчас, но не заменяют помощь
+    специалиста. Если тяжёлое состояние держится долго или повторяется —
+    обратись к врачу или психологу.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
