@@ -31,16 +31,19 @@
       <button class="mode-btn" data-mode="child">Детский</button>
     </div>
 
-    <!-- Экстренная кнопка: быстрая техника, когда нужно успокоиться прямо сейчас -->
-    <button id="sos-button" class="sos">🆘 SOS · быстро успокоиться</button>
+    <!-- Экстренная кнопка: быстрая техника, когда нужно успокоиться прямо сейчас.
+         data-adult / data-child — подписи под взрослый и детский режим (меняются из script.js) -->
+    <button id="sos-button" class="sos"
+            data-adult="🆘 SOS · быстро успокоиться"
+            data-child="🆘 Мне совсем тяжело">🆘 SOS · быстро успокоиться</button>
 
     <div class="cards">
-      <button class="card" data-id="trevoga">Тревожно, волнуюсь</button>
-      <button class="card" data-id="son">Не могу уснуть</button>
-      <button class="card" data-id="zlost">Злюсь, раздражает</button>
-      <button class="card" data-id="panika">Накрывает паника</button>
-      <button class="card" data-id="grust">Грустно, тяжело на душе</button>
-      <button class="card" data-id="fokus">Не могу сосредоточиться</button>
+      <button class="card" data-id="trevoga" data-adult="Тревожно, волнуюсь" data-child="Боюсь, волнуюсь">Тревожно, волнуюсь</button>
+      <button class="card" data-id="son" data-adult="Не могу уснуть" data-child="Не могу заснуть">Не могу уснуть</button>
+      <button class="card" data-id="zlost" data-adult="Злюсь, раздражает" data-child="Я злюсь">Злюсь, раздражает</button>
+      <button class="card" data-id="panika" data-adult="Накрывает паника" data-child="Мне очень страшно">Накрывает паника</button>
+      <button class="card" data-id="grust" data-adult="Грустно, тяжело на душе" data-child="Мне грустно">Грустно, тяжело на душе</button>
+      <button class="card" data-id="fokus" data-adult="Не могу сосредоточиться" data-child="Не могу усидеть на месте">Не могу сосредоточиться</button>
     </div>
   </section>
 
