@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Просто дыши</title>
+
+  <!-- Современный шрифт Manrope. Если интернета нет — подхватится системный (см. style.css) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 
   <!-- PWA: «паспорт» приложения, цвет и иконка для домашнего экрана -->
@@ -25,12 +31,15 @@
       <button class="mode-btn" data-mode="child">Детский</button>
     </div>
 
+    <!-- Экстренная кнопка: быстрая техника, когда нужно успокоиться прямо сейчас -->
+    <button id="sos-button" class="sos">🆘 SOS · быстро успокоиться</button>
+
     <div class="cards">
-      <button class="card" data-id="trevoga">Тревога перед важным</button>
+      <button class="card" data-id="trevoga">Тревожно, волнуюсь</button>
       <button class="card" data-id="son">Не могу уснуть</button>
-      <button class="card" data-id="zlost">Злюсь</button>
-      <button class="card" data-id="panika">Паника</button>
-      <button class="card" data-id="rebenok">Ребёнок расстроен</button>
+      <button class="card" data-id="zlost">Злюсь, раздражает</button>
+      <button class="card" data-id="panika">Накрывает паника</button>
+      <button class="card" data-id="grust">Грустно, тяжело на душе</button>
       <button class="card" data-id="fokus">Не могу сосредоточиться</button>
     </div>
   </section>
@@ -39,9 +48,7 @@
   <section id="screen-technique" hidden>
     <button id="back-button" class="back">← Назад</button>
     <h1 id="tech-title"></h1>
-    <p id="tech-basis" class="muted"></p>
-    <p id="tech-instruction"></p>
-    <p id="tech-why" class="muted"></p>
+    <p id="tech-instruction" class="instruction"></p>
 
     <!-- Зона дыхания: круг растёт/сжимается, а текст лежит поверх и не масштабируется -->
     <div class="breath-area">
@@ -61,6 +68,18 @@
     <div id="stars-panel" class="stars-panel" hidden>
       <div class="stars-total">⭐ Звёздочек: <span id="stars-count">0</span></div>
       <div id="stars-praise" class="stars-praise"></div>
+    </div>
+
+    <!-- Пояснения к технике -->
+    <div class="info-cards">
+      <div id="tech-why-card" class="info-card">
+        <span class="info-label">Почему помогает</span>
+        <span id="tech-why"></span>
+      </div>
+      <div id="tech-basis-card" class="info-card">
+        <span class="info-label">На чём основана</span>
+        <span id="tech-basis"></span>
+      </div>
     </div>
   </section>
 

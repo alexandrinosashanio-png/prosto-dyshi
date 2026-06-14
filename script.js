@@ -6,7 +6,7 @@
 const techniques = [
   {
     id: "trevoga",
-    situation: "Тревога перед важным",
+    situation: "Тревожно, волнуюсь",
     title: "Бокс-дыхание (4-4-4-4)",
     basis: "Техника из практики спецслужб и спортсменов для собранности под давлением.",
     why: "При тревоге дыхание сбивается и частит. Ровный счёт с равными фазами возвращает ему чёткий ритм — и тело понимает, что опасности нет, можно собраться.",
@@ -54,7 +54,7 @@ const techniques = [
   },
   {
     id: "zlost",
-    situation: "Злюсь",
+    situation: "Злюсь, раздражает",
     title: "Удлинённый выдох (4-6)",
     basis: "Опирается на работу блуждающего нерва (вагуса).",
     why: "Когда выдох длиннее вдоха, срабатывает естественный «тормоз» тела (через блуждающий нерв): пульс снижается, и злость теряет силу.",
@@ -75,7 +75,7 @@ const techniques = [
   },
   {
     id: "panika",
-    situation: "Паника",
+    situation: "Накрывает паника",
     title: "Дыхание «4 — пауза 2 — выдох 6»",
     basis: "Мягкое замедляющее дыхание без долгих задержек.",
     why: "В панике дыхание частит, кислорода будто не хватает — и страх растёт. Спокойный вдох, короткая пауза и длинный выдох разрывают этот круг, не пугая нехваткой воздуха.",
@@ -97,15 +97,15 @@ const techniques = [
     },
   },
   {
-    id: "rebenok",
-    situation: "Ребёнок расстроен",
-    title: "Дыхание животом «надуваем шарик»",
-    basis: "Диафрагмальное дыхание в игровой подаче для детей.",
-    why: "При расстройстве живот зажимается, и дышится только верхушкой груди. Дыхание животом-«шариком» возвращает глубокое дыхание, а долгий выдох успокаивает — образ шарика помогает ребёнку переключиться.",
-    instruction: "Вдох — животик надувается как шарик на 4, выдох — шарик медленно сдувается на 6.",
+    id: "grust",
+    situation: "Грустно, тяжело на душе",
+    title: "Дыхание животом (диафрагмальное)",
+    basis: "Диафрагмальное дыхание — опора телесных практик работы с тяжёлыми состояниями.",
+    why: "Когда тяжело на душе, дыхание становится поверхностным, грудным. Глубокое дыхание животом с длинным выдохом мягко успокаивает и возвращает телу опору.",
+    instruction: "Положи ладонь на живот. Вдох — живот плавно поднимается на 4, медленный выдох — опускается на 6.",
     phases: [
-      { name: "Надуваем шарик (вдох)", seconds: 4, kind: "in" },
-      { name: "Сдуваем шарик (выдох)", seconds: 6, kind: "out" },
+      { name: "Вдох животом", seconds: 4, kind: "in" },
+      { name: "Медленный выдох", seconds: 6, kind: "out" },
     ],
     child: {
       title: "Надуваем шарик",
@@ -135,6 +135,30 @@ const techniques = [
       phases: [
         { name: "Вдох", seconds: 5, kind: "in" },
         { name: "Выдох", seconds: 5, kind: "out" },
+      ],
+    },
+  },
+  {
+    id: "sos",
+    situation: "SOS — быстро успокоиться",
+    title: "Физиологический вздох (двойной вдох — длинный выдох)",
+    basis: "«Физиологический вздох» — самый быстрый способ снизить возбуждение; исследован в Стэнфорде (лаборатория Хубермана).",
+    why: "Два вдоха подряд расправляют лёгкие, а длинный выдох резко сбрасывает напряжение. Успокоение наступает за несколько повторов — быстрее, чем у других техник.",
+    instruction: "Вдох носом, сверху добери ещё немного воздуха — и длинный спокойный выдох ртом. Повтори 3–5 раз.",
+    // scale — насколько раздуть круг в этой фазе (для двойного вдоха).
+    phases: [
+      { name: "Вдох", seconds: 2, kind: "in", scale: 0.9 },
+      { name: "Добери воздуха", seconds: 1, kind: "in", scale: 1 },
+      { name: "Долгий выдох", seconds: 5, kind: "out" },
+    ],
+    child: {
+      title: "Дыхание-спасатель",
+      instruction: "Вдохни носиком, потом ещё чуть-чуть добери воздуха сверху — и долго-долго выдохни ртом. Повтори несколько раз.",
+      why: "Два вдоха и длинный выдох быстро прогоняют страх и слёзы — как будто нажал волшебную кнопку «успокоиться».",
+      phases: [
+        { name: "Вдох", seconds: 2, kind: "in", scale: 0.9 },
+        { name: "Ещё вдох", seconds: 1, kind: "in", scale: 1 },
+        { name: "Долгий выдох", seconds: 5, kind: "out" },
       ],
     },
   },
@@ -238,15 +262,15 @@ function openTechnique(id) {
   // Подставляем тексты в поля второго экрана.
   document.getElementById("tech-title").textContent = content.title;
   document.getElementById("tech-instruction").textContent = content.instruction;
-  document.getElementById("tech-why").textContent = "Почему помогает: " + content.why;
+  document.getElementById("tech-why").textContent = content.why;
 
-  // «На чём основана» — научная справка, нужна во взрослом режиме; в детском прячем.
-  const basisEl = document.getElementById("tech-basis");
+  // «На чём основана» — научная справка, нужна во взрослом режиме; в детском прячем карточку.
+  const basisCard = document.getElementById("tech-basis-card");
   if (mode === "child") {
-    basisEl.hidden = true;
+    basisCard.hidden = true;
   } else {
-    basisEl.hidden = false;
-    basisEl.textContent = "На чём основана: " + tech.basis;
+    basisCard.hidden = false;
+    document.getElementById("tech-basis").textContent = tech.basis;
   }
 
   // Готовим панель звёздочек: показываем счёт, очищаем прошлую похвалу.
@@ -280,10 +304,10 @@ function runPhase(index) {
   // Масштаб круга под фазу: вдох — большой, выдох — маленький, задержка — без изменений.
   if (phase.kind === "in") {
     circle.style.transitionDuration = phase.seconds + "s";
-    circle.style.transform = "scale(1)";
+    circle.style.transform = "scale(" + (phase.scale ?? 1) + ")";
   } else if (phase.kind === "out") {
     circle.style.transitionDuration = phase.seconds + "s";
-    circle.style.transform = "scale(0.7)";
+    circle.style.transform = "scale(" + (phase.scale ?? 0.7) + ")";
   }
   // для "hold" размер оставляем как есть
 
@@ -349,6 +373,9 @@ if ("serviceWorker" in navigator) {
 document.querySelectorAll(".card").forEach((card) => {
   card.addEventListener("click", () => openTechnique(card.dataset.id));
 });
+
+// Кнопка SOS — быстрая техника для экстренного успокоения.
+document.getElementById("sos-button").addEventListener("click", () => openTechnique("sos"));
 
 // Кнопка «Назад».
 backButton.addEventListener("click", goBack);
