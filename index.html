@@ -17,7 +17,13 @@
   <!-- Экран 1: выбор ситуации -->
   <section id="screen-choice">
     <h1>Просто дыши</h1>
-    <p>Выбери, что сейчас происходит — подберём короткую технику.</p>
+    <p id="choice-intro">Выбери, что сейчас происходит — подберём короткую технику.</p>
+
+    <!-- Переключатель режима подачи -->
+    <div class="mode-switch" role="group" aria-label="Режим">
+      <button class="mode-btn" data-mode="adult">Взрослый</button>
+      <button class="mode-btn" data-mode="child">Детский</button>
+    </div>
 
     <div class="cards">
       <button class="card" data-id="trevoga">Тревога перед важным</button>
@@ -37,15 +43,24 @@
     <p id="tech-instruction"></p>
     <p id="tech-why" class="muted"></p>
 
-    <!-- Зона дыхания: круг с подписью фазы и отсчётом -->
+    <!-- Зона дыхания: круг растёт/сжимается, а текст лежит поверх и не масштабируется -->
     <div class="breath-area">
-      <div id="breath-circle" class="circle">
-        <span id="phase-name" class="phase-name">Готовы?</span>
-        <span id="phase-count" class="phase-count"></span>
+      <div class="breath-stage">
+        <div id="breath-circle" class="circle"></div>
+        <div class="breath-text">
+          <span id="phase-name" class="phase-name">Готовы?</span>
+          <span id="phase-count" class="phase-count"></span>
+        </div>
       </div>
       <div class="controls">
         <button id="start-button" class="primary">Начать</button>
       </div>
+    </div>
+
+    <!-- Звёздочки: видны в детском режиме. Копятся за каждый круг дыхания. -->
+    <div id="stars-panel" class="stars-panel" hidden>
+      <div class="stars-total">⭐ Звёздочек: <span id="stars-count">0</span></div>
+      <div id="stars-praise" class="stars-praise"></div>
     </div>
   </section>
 
